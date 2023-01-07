@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find kuka_mobile)/config/controllers.yaml" command="load"/>
+  <rosparam file="$(find kuka_mobile)/config/joint_names_kuka_mobile.yaml" command="load"/>
+  
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="joint_state_controller joint1 joint2 joint3 joint4 joint5 joint6 joint7 wheel1 wheel2"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen" />
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" respawn="false" output="screen" /> -->
+
+</launch>

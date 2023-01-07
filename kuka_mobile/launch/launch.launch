@@ -1,0 +1,48 @@
+<!-- Every launch file starts with this command -->
+<launch> 
+
+    <include file= "$(find gazebo_ros)/launch/empty_world.launch"/> 
+		<!-- <arg name="world_name" value="/home/naveen/Project_1_Modelling/src/car7/launch/world/competition_arena.world"/>  -->
+	<!-- </include>  -->
+    
+	
+   
+    <param name = "my_robot" value="kuka_mobile"/> 
+	<arg name ="init_pose" value="-x 0 -y 0 -z 0 -R 0 -P 0 -Y 0"/>
+    
+
+   
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="false"/> 
+    </node>
+
+
+    <!-- TF node that gives the static transformation between the world map and the base link of your robot. Change /base_link to the /root link name of your robot -->
+    <node pkg="tf" type="static_transform_publisher" name="map_to_base" args="1 0 0 0 0 0 1 /map /dummy 10" />
+
+
+    
+
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>	 -->
+
+
+   	<node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find kuka_mobile)/urdf/kuka_mobile.urdf -urdf -model kuka_mobile"
+    output="screen" />
+   
+    <arg name="urdf_path" default="$(find kuka_mobile)/urdf/kuka_mobile.urdf"/>
+  
+    <param name="robot_description" textfile="$(arg urdf_path)" />
+
+
+	<node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+
+
+</launch>

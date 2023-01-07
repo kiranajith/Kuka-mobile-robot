@@ -1,0 +1,55 @@
+<!-- Every launch file starts with this command -->
+<launch> 
+
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>
+
+    <include file= "$(find gazebo_ros)/launch/empty_world.launch"> 
+		<arg name="world_name" value="$(find kuka_mobile)/world/main.world"/> 
+	</include> 
+   
+    <param name = "my_robot" value="kuka_mobile"/> 
+	<arg name ="init_pose" value="-x 0 -y 0 -z 0 -R 0 -P 0 -Y 0"/>
+    
+    <rosparam file="$(find kuka_mobile)/config/controllers.yaml" command="load"/>
+    <rosparam file="$(find kuka_mobile)/config/joint_names_kuka_mobile.yaml" command="load"/>
+	 
+   
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="False"/> -->
+    </node>
+
+
+    <!-- TF node that gives the static transformation between the world map and the base link of your robot. Change /base_link to the /root link name of your robot -->
+    <node pkg="tf" type="static_transform_publisher" name="map_to_base" args="1 0 0 0 0 0 1 /map /dummy 10" />
+
+
+    <!-- Controller spawner: Starts all the defined controllers with their configs. Just add your controller names defined in your config file into the args tag below   -->
+    <node name="controller_spwaner" pkg="controller_manager" type="spawner" respawn="false"
+    	output="screen"  args="joint_state_controller joint1 joint2 joint3 joint4 joint5 joint6 joint7 wheel1 wheel2 gripp1 gripp2"/>
+
+
+    <!-- A node to publish the robot states onto ros network -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>	
+
+
+    <!-- A node to spawn the robot into gazebo's world file. Notice that the args has the param robot_description that you previously defined. This is how your robot's spec gets included.-->
+   	<node
+		name="spawn_model"
+		pkg="gazebo_ros"
+		type="spawn_model"
+		args="$(arg init_pose) -param robot_description -urdf -model my_robot"
+		output="screen"/>
+    
+    <arg name="urdf_path" default="$(find kuka_mobile)/urdf/kuka_mobile.urdf"/>
+  
+    <param name="robot_description" textfile="$(arg urdf_path)" />
+
+	<!--Default node -->
+	<node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+
+
+</launch>

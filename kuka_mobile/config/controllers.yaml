@@ -1,0 +1,53 @@
+
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+joint1:
+  type: position_controllers/JointPositionController
+  joint: j1
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+joint2:
+  type: position_controllers/JointPositionController
+  joint: j2
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+joint3:
+  type: position_controllers/JointPositionController
+  joint: j3
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+joint4:
+  type: position_controllers/JointPositionController
+  joint: j4
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+joint5:
+  type: position_controllers/JointPositionController
+  joint: j5
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+joint6:
+  type: position_controllers/JointPositionController
+  joint: j6
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+joint7:
+  type: position_controllers/JointPositionController
+  joint: j7
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+gripp1:
+  type: effort_controllers/JointPositionController
+  joint: g1
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+gripp2:
+  type: effort_controllers/JointPositionController
+  joint: g2
+  pid: {p: 100.0 , i: 1.0 , d: 1.0} 
+
+# Controller 3
+wheel1:
+  type: velocity_controllers/JointVelocityController
+  joint: w1
+  # pid: {p: 150.0 , i: 1.0 , d: 1.0} 
+
+wheel2:
+  type: velocity_controllers/JointVelocityController
+  joint: w2
+  # pid: {p: 150.0 , i: 1.0 , d: 1.0} 
+
+

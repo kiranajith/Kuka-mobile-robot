@@ -1,0 +1,8 @@
+<launch> 
+
+    <include file= "$(find kuka_mobile)/launch/gazebo.launch"> 
+	</include> 
+    <include file= "$(find kuka_mobile)/launch/my_controllers.launch"> 
+	</include> 
+
+</launch>

@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="kuka_mobile">
+    <link name="chassis">
+        
+<inertial>
+            <origin xyz="0.25869541672426 0.192505780825812 -8.21499680860377E-09" rpy="0 0 0" />
+            <mass value="109.730388705482" />
+            <inertia ixx="5.4341782966408" ixy="0.106274870195994" ixz="3.46114554365351E-08" iyy="10.5363707740741" iyz="-1.27246804837571E-07" izz="5.81414454117962" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/chassis.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/chassis.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="wheel1">
+        
+<inertial>
+            <origin xyz="0 -2.77555756156289E-17 0.0370615924700728" rpy="0 0 0" />
+            <mass value="100.38833895187297" />
+            <inertia ixx="0.00272539380308217" ixy="0" ixz="-2.83076731875841E-19" iyy="0.00272539380308217" iyz="-2.44777210122578E-20" izz="0.00392351398264956" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/wheel1.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/wheel1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="w1" type="continuous">
+        <origin xyz="0.127 -0.28702 0.098538" rpy="1.5708 -1.4539 0" />
+        <parent link="chassis" />
+        <child link="wheel1" />
+        <axis xyz="0 0 1" />
+        <!-- <limit lower="-3.05" upper="3.05" effort="10" velocity="50"/> -->
+    </joint>
+    <link name="wheel2">
+        
+<inertial>
+            <origin xyz="0 5.55111512312578E-17 0.0370615924700728" rpy="0 0 0" />
+            <mass value="1.38833895187297" />
+            <inertia ixx="0.00272539380308217" ixy="0" ixz="1.28704878059792E-19" iyy="0.00272539380308217" iyz="4.12507805507371E-20" izz="0.00392351398264955" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/wheel2.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/wheel2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="w2" type="continuous">
+        <origin xyz="0.127 0.28702 0.098538" rpy="1.5708 -1.0099 3.1416" />
+        <parent link="chassis" />
+        <child link="wheel2" />
+        <axis xyz="0 0 -1" />
+        <!-- <limit lower="-3.05" upper="3.05" effort="10" velocity="50"/> -->
+
+    </joint>
+    <link name="base">
+        
+<inertial>
+            <origin xyz="-0.0128558759424202 2.33730268292638E-07 0.0699637420545312" rpy="0 0 0" />
+            <mass value="3.85673109866343" />
+            <inertia ixx="0.0141694474779058" ixy="-3.46114554601558E-08" ixz="0.000619856375109048" iyy="0.0177084891969044" iyz="1.27246804791466E-07" izz="0.0169453957306945" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/base.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/base.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="basekuka" type="fixed">
+        <origin xyz="0 0 0.27942" rpy="0 0 0" />
+        <parent link="chassis" />
+        <child link="base" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="l1">
+        
+<inertial>
+            <origin xyz="-1.07419610897042E-06 -0.0348176379806646 0.123297111861531" rpy="0 0 0" />
+            <mass value="2.69585243416401" />
+            <inertia ixx="0.0169841452084803" ixy="-5.72170854771202E-09" ixz="1.49826473814368E-07" iyy="0.0162060468739537" iyz="0.00301569975605835" izz="0.00600698145803866" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l1.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j1" type="revolute">
+        <origin xyz="0 0 0.147" rpy="0 0 -2.9571" />
+        <parent link="base" />
+        <child link="l1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.05" upper="3.05" effort="10" velocity="50" />
+    </joint>
+    <link name="l2">
+        
+<inertial>
+            <origin xyz="-2.27732565652883E-07 0.0287915867829553 0.0869420587805022" rpy="0 0 0" />
+            <mass value="3.20259654390777" />
+            <inertia ixx="0.0251758266423637" ixy="-2.64379354177231E-08" ixz="-4.65034549727592E-08" iyy="0.0238921587204047" iyz="0.00467719478698126" izz="0.0076773684272548" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l2.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j2" type="revolute">
+        <origin xyz="0 0 0.1925" rpy="0 0.0053997 0" />
+        <parent link="l1" />
+        <child link="l2" />
+        <axis xyz="0 1 0" />
+        <limit lower="-3.05" upper="3.05" effort="10" velocity="50" />
+    </joint>
+    <link name="l3">
+        
+<inertial>
+            <origin xyz="-8.77561335686089E-07 -0.0348174862715901 0.123429867343758" rpy="0 0 0" />
+            <mass value="2.69585280725073" />
+            <inertia ixx="0.0169842680845662" ixy="-5.19018879957533E-09" ixz="1.13076410258966E-07" iyy="0.0162060522048722" iyz="0.00301571989071225" izz="0.00600685886730151" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l3.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j3" type="revolute">
+        <origin xyz="0 -0.0005 0.20667" rpy="0 0 -0.90202" />
+        <parent link="l2" />
+        <child link="l3" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.05" upper="3.05" effort="10" velocity="50" />
+    </joint>
+    <link name="l4">
+        
+<inertial>
+            <origin xyz="-3.13438787119535E-07 0.0287913672518169 0.0869421425942705" rpy="0 0 0" />
+            <mass value="3.20258822227518" />
+            <inertia ixx="0.0251758497813214" ixy="-2.12945347691923E-08" ixz="-4.89557748296118E-08" iyy="0.0238921733857743" iyz="0.00467720152801212" izz="0.007677390075185" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l4.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l4.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j4" type="revolute">
+        <origin xyz="0 0 0.19263" rpy="0 0.141 0" />
+        <parent link="l3" />
+        <child link="l4" />
+        <axis xyz="0 1 0" />
+        <limit lower="-3.05" upper="3.05" effort="10" velocity="50" />
+    </joint>
+    <link name="l5">
+        
+<inertial>
+            <origin xyz="3.38780084208068E-07 -0.0298262252673278 0.0612977707745908" rpy="0 0 0" />
+            <mass value="1.21453437186645" />
+            <inertia ixx="0.00673926227718285" ixy="-6.08201406338688E-10" ixz="9.88272083122361E-09" iyy="0.00566802038986323" iyz="0.00222830135392842" izz="0.00305596316322463" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l5.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l5.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j5" type="revolute">
+        <origin xyz="0 -0.0005 0.22177" rpy="0 0 2.9452" />
+        <parent link="l4" />
+        <child link="l5" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.05" upper="3.05" effort="10" velocity="50" />
+    </joint>
+    <link name="l6">
+        
+<inertial>
+            <origin xyz="4.16663853847199E-06 0.000339720932477222 0.000593402179120295" rpy="0 0 0" />
+            <mass value="1.80875150376228" />
+            <inertia ixx="0.00489794485509576" ixy="4.7150088579675E-07" ixz="-5.54441116045596E-08" iyy="0.00468931114140774" iyz="0.000244483132492946" izz="0.00356698606616304" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l6.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l6.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j6" type="revolute">
+        <origin xyz="0 0 0.17753" rpy="0 0.24956 0" />
+        <parent link="l5" />
+        <child link="l6" />
+        <axis xyz="0 1 0" />
+        <limit lower="-3.05" upper="3.05" effort="10" velocity="50" />
+    </joint>
+    <link name="l7">
+        
+<inertial>
+            <origin xyz="3.14040565227436E-06 -1.62670008116428E-06 0.0326333719980587" rpy="0 0 0" />
+            <mass value="0.2060936799429" />
+            <inertia ixx="0.000135859137734074" ixy="1.41623465593681E-08" ixz="-6.52250861875691E-09" iyy="0.000135852334786769" iyz="2.31577071253533E-09" izz="0.000237447580191033" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l7.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/l7.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j7" type="revolute">
+        <origin xyz="0 0 0.062149" rpy="0 0 -2.029" />
+        <parent link="l6" />
+        <child link="l7" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.05" upper="3.05" effort="10" velocity="50" />
+    </joint>
+    <link name="end">
+        
+<inertial>
+            <origin xyz="1.83683038224025E-09 0.0704827686642053 3.22981225098218E-10" rpy="0 0 0" />
+            <mass value="0.0983536038829532" />
+            <inertia ixx="9.63181987090208E-05" ixy="-2.41838468433735E-12" ixz="9.70038854601207E-12" iyy="4.7440278289165E-05" iyz="-2.26959857503468E-13" izz="0.000136914965695072" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/end.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/end.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="fix" type="fixed">
+        <origin xyz="0 0 0.033454" rpy="1.5708 0 1.3475" />
+        <parent link="l7" />
+        <child link="end" />
+        <axis xyz="0 1 0" />
+    </joint>
+    <link name="gripp1">
+        
+<inertial>
+            <origin xyz="-0.0100369066785437 0.0362933345087955 0" rpy="0 0 0" />
+            <mass value="0.00607219847001786" />
+            <inertia ixx="2.53015790454417E-06" ixy="2.06799080760885E-07" ixz="9.92616735063633E-24" iyy="2.32250952226826E-07" iyz="-5.02512222125964E-22" izz="2.73363482301365E-06" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/gripp1.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/gripp1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="g1" type="prismatic">
+        <origin xyz="0 0.11184 0" rpy="3.1416 0 -3.1416" />
+        <parent link="end" />
+        <child link="gripp1" />
+        <axis xyz="1 0 0" />
+        <limit lower="-0.0250" upper="0" effort="10" velocity="50" />
+    </joint>
+    <link name="gripp2">
+        
+<inertial>
+            <origin xyz="-0.0100369066785437 0.0362933345087957 -7.49400541621981E-16" rpy="0 0 0" />
+            <mass value="0.00607219847001784" />
+            <inertia ixx="2.53015790454416E-06" ixy="2.0679908076088E-07" ixz="-7.39168595377386E-21" iyy="2.32250952226824E-07" iyz="9.23298999731689E-21" izz="2.73363482301365E-06" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/gripp2.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/gripp2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="g2" type="prismatic">
+        <origin xyz="0 0.11184 0" rpy="0 0 0" />
+        <parent link="end" />
+        <child link="gripp2" />
+        <axis xyz="-1 0 0" />
+        <limit lower="0" upper="0.025" effort="10" velocity="50" />
+    </joint>
+
+
+    <link name="front">
+        
+<inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.209263635450537" />
+            <inertia ixx="0.000113542171246753" ixy="1.10114283143059E-20" ixz="0" iyy="0.000113542171246753" iyz="0" izz="0.000113542171246753" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/front.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://kuka_mobile/meshes/front.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="fw" type="continuous">
+        <origin xyz="0.5588 0 0.060438" rpy="-1.7844 0.47725 -3.046" />
+        <parent link="chassis" />
+        <child link="front" />
+        <axis xyz="0 1 0" />
+    </joint>
+    
+    
+<transmission name="trans_w1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="w1">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="w1_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_w2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="w2">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="w2_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j1">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j1_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j2">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j2_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j3">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j3_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j4">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j4_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j5">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j5_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j6">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j6_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j7">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j7">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j7_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_g1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="g1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="g1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_g2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="g2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="g2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
